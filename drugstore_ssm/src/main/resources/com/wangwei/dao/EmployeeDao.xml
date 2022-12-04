@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace：名称空间
+-->
+<mapper namespace="com.wangwei.dao.EmployeeDao">
+    <!--定义对象与表数据之间的映射关系-->
+    <resultMap id="employeeResultMap" type="com.wangwei.domain.Employee">
+        <result property="idNumber" column="id_number"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createUser" column="create_user"/>
+        <result property="updateUser" column="update_user"/>
+    </resultMap>
+    <!--新增员工-->
+    <insert id="add" >
+        insert into employee values (null, #{name}, #{username}, #{password}, #{phone}, #{sex}, #{idNumber}, #{status},
+                                     #{createTime}, #{username}, #{createUser}, #{updateUser});
+    </insert>
+    <!--根据条件查询总记录数-->
+    <select id="getAll" resultMap="employeeResultMap">
+     select * from employee;
+    </select>
+    <!--分页查询-->
+    <select id="getPage" resultMap="employeeResultMap">
+    select * from employee limit #{begin},#{size};
+    </select>
+</mapper>
