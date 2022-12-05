@@ -21,11 +21,30 @@
                                      #{createTime}, #{username}, #{createUser}, #{updateUser});
     </insert>
     <!--根据条件查询总记录数-->
-    <select id="getAll" resultMap="employeeResultMap">
-     select * from employee;
+    <select id="getTotalCount" resultType="int">
+        select count(*)
+        from employee
+        <where>
+            <if test="name != null and name != '' ">
+                and name like #{name}
+            </if>
+            <if test="sex != null and sex != '' ">
+                and sex like #{sex}
+            </if>
+        </where>
     </select>
     <!--分页查询-->
     <select id="getPage" resultMap="employeeResultMap">
-    select * from employee limit #{begin},#{size};
+        select *
+        from employee
+        <where>
+            <if test="name != null and name != '' ">
+                and name like #{name}
+            </if>
+            <if test="sex != null and sex != '' ">
+                and sex = #{sex}
+            </if>
+        </where>
+        limit #{begin},#{size};
     </select>
 </mapper>

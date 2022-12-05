@@ -37,9 +37,11 @@ public class EmployeeServiceTest {
      */
     @Test
     public void testGetPage() {
-        List<Employee> employees = employeeDao.getPage(0, 5);
+        Employee employee = new Employee();
+        employee.setSex("1");
+        List<Employee> employees = employeeDao.getPage(0, 5, null, "1");
         System.out.println(employees);
-        PageBean<Employee> page = employeeService.getPage(1, 5);
+        PageBean<Employee> page = employeeService.getPage(1, 5, employee);
         System.out.println(page);
     }
 }

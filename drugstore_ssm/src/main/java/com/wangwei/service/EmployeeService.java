@@ -24,5 +24,5 @@ public interface EmployeeService {
      * @param currentPage
      * @param pageSize
      */
-    PageBean<Employee> getPage(Integer currentPage, Integer pageSize);
+    PageBean<Employee> getPage(Integer currentPage, Integer pageSize, Employee employee);
 }

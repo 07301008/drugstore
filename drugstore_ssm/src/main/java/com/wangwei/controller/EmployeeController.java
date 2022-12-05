@@ -60,9 +60,9 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/page")
-    public Result<PageBean<Employee>> getPage(Integer currentPage, Integer pageSize){
+    public Result<PageBean<Employee>> getPage(Integer currentPage, Integer pageSize, Employee employee){
         System.out.println("--------分页查询---------");
-        PageBean<Employee> page = employeeService.getPage(currentPage, pageSize);
+        PageBean<Employee> page = employeeService.getPage(currentPage, pageSize, employee);
         return Result.success(page);
     }
 }

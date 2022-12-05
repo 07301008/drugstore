@@ -28,12 +28,12 @@ public interface EmployeeDao {
      * @param size 每页显示数量
      * @return
      */
-    List<Employee> getPage(@Param("begin") Integer begin, @Param("size") Integer size);
+    List<Employee> getPage(@Param("begin") Integer begin, @Param("size") Integer size
+            , @Param("name") String name, @Param("sex") String sex);
 
     /**
      * 查询总记录数
      * @return
      */
-    @Select("select count(*) from employee")
-    int getTotalCount();
+    int getTotalCount(@Param("name") String name, @Param("sex") String sex);
 }
